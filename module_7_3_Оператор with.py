@@ -18,14 +18,13 @@ class WordsFinder:
         return all_words
 
     def find(self, word):
-        result = {}
-        index = 1
+        places = {}
         for name, words in self.get_all_words().items():
-            for i in words:
-                if i.lower() == word.lower():
-                    result[name] = index
+            index = 1
+            if word.lower() in words:
+                places[name] = words.index(word.lower()) + 1
                 index += 1
-        return result
+        return places
 
     def count(self, word):
         result = {}
